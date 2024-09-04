@@ -19,11 +19,11 @@ from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv())
 openai.api_key = os.environ['OPENAI_API_KEY']
 
-llm_model = "gpt-4"
+llm_model = "gpt-4o-mini"
 
 
 def get_completion(prompt, model=llm_model):
-    messages = [{"role": "user", "content": prompt}]
+    messages = [{"role": "user", "content": prompt}] #messages = [{"role": "user", "content": prompt}]
     response = openai.ChatCompletion.create(
         model=model,
         messages=messages,
