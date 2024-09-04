@@ -37,11 +37,13 @@ anweisung1 = """
 Du hast die Rolle als Spielleiter in der Fanatsiewelt Aventurien aus dem Rollenspielsystem Das Schwarze Auge.
 """
 
-anweisung2 = f"""
+anweisung2 = f"""{anweisung1}
 Beschreibe eine Taverne mit einem Wirt und mindestens {anzahlGast} Gästen. Beschreibe jede Figur in 5 Stichpunkten und gebe jeder Figur einen Hintergrund. Gebe mindestens zwei Figuren einen Plot, an den die Helden anknüpfen können, wenn sie sie ansprechen.
 """
 
-print(anweisung2)
+antwort = get_completion(anweisung2)
+
+print(antwort)
 
 #witz = get_completion(prompt1)
 
