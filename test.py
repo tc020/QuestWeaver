@@ -27,14 +27,23 @@ def get_completion(prompt, model=llm_model):
     response = openai.ChatCompletion.create(
         model=model,
         messages=messages,
-        temperature=0,
+        temperature=0.5,
     )
     return response.choices[0].message["content"]
 
-prompt1 = """
-Erzähle einen Witz in 10 Wörtern
+anzahlGast = 3
+
+anweisung1 = """
+Du hast die Rolle als Spielleiter in der Fanatsiewelt Aventurien aus dem Rollenspielsystem Das Schwarze Auge.
 """
 
-witz = get_completion(prompt1)
+anweisung2 = f"""
+Beschreibe eine Taverne mit einem Wirt und mindestens {anzahlGast} Gästen. Beschreibe jede Figur in 5 Stichpunkten und gebe jeder Figur einen Hintergrund. Gebe mindestens zwei Figuren einen Plot, an den die Helden anknüpfen können, wenn sie sie ansprechen.
+"""
 
-print(witz)
+print(anweisung2)
+
+#witz = get_completion(prompt1)
+
+#print(witz)
+
