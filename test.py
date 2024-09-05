@@ -31,6 +31,14 @@ def get_completion(prompt, model=llm_model):
     )
     return response.choices[0].message["content"]
 
+
+# --------------- Szenario festlegen -----------------------
+
+print("1. Wald")
+print("Wähle ein Szenario (1-3) aus oder lege selbst eins fest: ")
+
+szenario = input()
+
 anzahlGast = 3
 
 anweisung1 = """
