@@ -1,4 +1,4 @@
-#Du hast die Rolle als Spielleiter in der Fanatsiewelt Aventurien aus dem Rollenspielsystem Das Schwarze Auge. Beschreibe eine Taverne mit 1 bis 2 Wirten und mindestens 3 Gästen. Beschreibe jede Figur in 5 Stichpunkten und gebe jeder Figur einen Hintergrund. Gebe mindestens zwei Figuren einen Plot, an den die Helden anknüpfen können, wenn sie sie ansprechen.
+#Du hast die Rolle als Spielleiter in der Fanatsiewelt Aventurien aus dem Rollenspielsystem Das Schwarze Auge. Beschreibe eine Taverne mit einem Wirt und mindestens 3 Gästen. Beschreibe jede Figur in 5 Stichpunkten und gebe jeder Figur einen Hintergrund. Gebe mindestens zwei Figuren einen Plot, an den die Helden anknüpfen können, wenn sie sie ansprechen.
 
 #Beschreibe den Plot von Gast 1 detaillierter und füge Elemente hinzu, die für die Helden eine Herausforderung darstellen. 
 
@@ -35,9 +35,11 @@ def get_completion(prompt, model=llm_model):
 # --------------- Szenario festlegen -----------------------
 
 print("1. Wald")
-print("Wähle ein Szenario (1-3) aus oder lege selbst eins fest: ")
+print("2. Stadt")
+print("3. Wald")
+print("4. Sumpf")
 
-szenario = input()
+szenario = input("Wähle ein Szenario (1-4) aus oder lege selbst eins fest: ")
 
 anzahlGast = 3
 
@@ -46,14 +48,13 @@ Du hast die Rolle als Spielleiter in der Fanatsiewelt Aventurien aus dem Rollens
 """
 
 anweisung2 = f"""{anweisung1}
-Beschreibe eine Taverne mit einem Wirt und mindestens {anzahlGast} Gästen. Beschreibe jede Figur in 5 Stichpunkten und gebe jeder Figur einen Hintergrund. Gebe mindestens zwei Figuren einen Plot, an den die Helden anknüpfen können, wenn sie sie ansprechen.
+Beschreibe einen {szenario} mit einem Wirt und mindestens {anzahlGast} Gästen. Beschreibe jede Figur in 5 Stichpunkten und gebe jeder Figur einen Hintergrund. Gebe mindestens zwei Figuren einen Plot, an den die Helden anknüpfen können, wenn sie sie ansprechen.
 """
+antwort ="Platzhalter"
+#antwort = get_completion(anweisung2)
 
-antwort = get_completion(anweisung2)
-
-print(antwort)
+print(szenario)
 
 #witz = get_completion(prompt1)
 
 #print(witz)
-
