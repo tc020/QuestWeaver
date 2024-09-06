@@ -8,6 +8,8 @@
 
 #Gebe weitere Möglichkeiten mit denen die Helden bei Morwenna auf weitere Abenteuer gehen könnten.
 
+#QuestWeaver
+
 from langchain.output_parsers import ResponseSchema
 from langchain.prompts import ChatPromptTemplate
 from langchain_community.chat_models import ChatOpenAI
@@ -44,8 +46,8 @@ szenario = input("Wähle ein Szenario (1-4) aus oder lege selbst eins fest: ")
 anzahlGast = input("Lege Anzahl der Gäste fest (max. 5): ")
 
 anweisung1 = """
-Du hast die Rolle als Spielleiter in der Fanatsiewelt Aventurien aus dem Rollenspielsystem Das Schwarze Auge.
-"""
+Du hast die Rolle als Spielleiter in der Fanatsiewelt Aventurien aus dem Rollenspielsystem Das Schwarze Auge. 
+""" #Rollenspielsystem eigentlich egal. Austesten ob das Auswirkungen auf die Quests hat
 
 anweisung2 = f"""{anweisung1}
 Beschreibe einen {szenario} mit einem Wirt und mindestens {anzahlGast} Gästen. Beschreibe jede Figur in 5 Stichpunkten und gebe jeder Figur einen Hintergrund. Gebe mindestens zwei Figuren einen Plot, an den die Helden anknüpfen können, wenn sie sie ansprechen.
