@@ -41,7 +41,7 @@ print("4. Sumpf")
 
 szenario = input("Wähle ein Szenario (1-4) aus oder lege selbst eins fest: ")
 
-anzahlGast = 3
+anzahlGast = input("Lege Anzahl der Gäste fest (max. 5): ")
 
 anweisung1 = """
 Du hast die Rolle als Spielleiter in der Fanatsiewelt Aventurien aus dem Rollenspielsystem Das Schwarze Auge.
@@ -53,12 +53,11 @@ Beschreibe einen {szenario} mit einem Wirt und mindestens {anzahlGast} Gästen. 
 antwort ="Platzhalter"
 #antwort = get_completion(anweisung2)
 
-print(szenario)
+print("Gewähltes Szenario:",szenario)
+print("Anzahl Gäste:",anzahlGast)
 
 #witz = get_completion(prompt1)
 
 #print(witz)
-
-# Implement in Gradio at this point
 
 #Für UI etwas passendes finden, ansonsten über Django realisieren
