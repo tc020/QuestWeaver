@@ -61,15 +61,4 @@ print(szenario)
 
 # Implement in Gradio at this point
 
-import gradio as gr
-
-def greet(name, intensity):
-    return "Hello, " + name + "!" * int(intensity)
-
-demo = gr.Interface(
-    fn=greet,
-    inputs=["text", "slider"],
-    outputs=["text"],
-)
-
-demo.launch()
+#Für UI etwas passendes finden, ansonsten über Django realisieren
