@@ -16,6 +16,9 @@ from langchain_community.chat_models import ChatOpenAI
 import datetime
 import os
 import openai
+import django
+
+print(django.get_version())
 
 from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv())
@@ -34,7 +37,7 @@ def get_completion(prompt, model=llm_model):
     return response.choices[0].message["content"]
 
 
-# --------------- Szenario festlegen -----------------------
+# --------------- Szenario konfigurieren -----------------------
 
 print("1. Wald")
 print("2. Stadt")
@@ -62,4 +65,5 @@ print("Anzahl Gäste:",anzahlGast)
 
 #print(witz)
 
-#Für UI etwas passendes finden, ansonsten über Django realisieren
+#Für UI etwas passendes finden, ansonsten über Django realisieren^
+
