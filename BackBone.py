@@ -65,5 +65,7 @@ print("Anzahl Gäste:",anzahlGast)
 
 #print(witz)
 
-#Für UI etwas passendes finden, ansonsten über Django realisieren^
+#Für UI etwas passendes finden, ansonsten über Django realisieren
+
+#testtest
 
