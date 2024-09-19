@@ -4,4 +4,4 @@
 
 Under Construction..
 
-Purrfect for complex adventures or campaigns 🐱
+Purrfect for complex adventures or campaigns 🐱 Miauz Genau
