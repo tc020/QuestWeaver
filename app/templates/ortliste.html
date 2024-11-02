@@ -1,0 +1,132 @@
+{% load static %}
+{% include "header.html" %}
+    <body>
+      <div class="container">
+      {% include "navbar.html" %}
+
+      <h1>Orte-Übersicht</h1>  
+
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Orte</th>
+            <th scope="col">Bemerkung</th>
+          </tr>
+        </thead>
+        <tbody>{% for ort in ortliste %}
+          <tr>
+            <th scope="row">{{ort.name}}</th>
+            <td>{{ort.kommentar}}</td>
+            <td><a class="btn btn-primary" href="{% url 'orte' ort.id %}" role="button">Einsehen</a></td>
+            <td><a class="btn btn-warning" href="{% url 'orte_edit' ort.id %}" role="button">Bearbeiten</a></td>
+            <td><a class="btn btn-danger" href="{% url 'delete_ortliste' ort.id %}" role="button">Delete</a></td>
+          </tr>
+          {% endfor %}</tbody>
+      </table>
+
+      <form action="{% url 'ortliste_anlegen' %}" method="post"> 
+        {% csrf_token %} 
+      
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Neuen Ort anlegen</span>
+      <input type="text" class="form-control" name="ortliste_name" id="ortliste_name" aria-label="Username" aria-describedby="basic-addon1"> <!-- greift auf die Post-Variable zu -->
+      </div>
+
+      <input type="submit" value="Neuen Ort anlegen" type="button" class="btn btn-success">
+    </form><br>
+
+    <details>
+      <summary class="btn btn-info">Co-Meister einen Ort generieren lassen</summary>
+      <form action="{% url 'ortliste' %}" method="post"> 
+        {% csrf_token %} 
+        <br>
+        <table style="background-color: #2dd5ffda;" border="1">
+          <tr>
+            <th>Typ</th>
+            <td>
+              <input type="radio" id="dorf" name="typ" value="Dorf">
+              <label for="dorf">Dorf</label>
+            </td>
+            <td>
+              <input type="radio" id="stadt" name="typ" value="Stadt">
+              <label for="stadt">Stadt</label>
+            </td>
+            <!-- 
+            <td>
+              <input type="radio" id="sonstiges" name="typ" value="Sonstiges">
+              <label for="sonstiges">Sonstiges</label>
+            </td>
+            -->
+          </tr>
+
+          <tr>
+            <th>Geographie</th>
+            <td>
+              <input type="radio" id="wald" name="geo" value="Wald">
+              <label for="wald">Wald</label>
+            </td>
+            <td>
+              <input type="radio" id="ebene" name="geo" value="Ebene">
+              <label for="land">Ebene</label>
+            </td>
+            <td>
+              <input type="radio" id="gewässer" name="geo" value="Gewässer">
+              <label for="gewässer">Gewässer</label>
+            </td>
+            <td>
+              <input type="radio" id="wüste" name="geo" value="Wüste">
+              <label for="wüste">Wüste</label>
+            </td>
+            <td>
+              <input type="radio" id="gebirge" name="geo" value="Gebirge">
+              <label for="gebirge">Gebirge</label>
+            </td>
+          </tr>
+        
+          <tr>
+            <th>Größe</th>
+            <td>
+              <input type="radio" id="klein" name="gross" value="Klein">
+              <label for="klein">Klein</label>
+            </td>
+            <td>
+              <input type="radio" id="mittel" name="gross" value="Mittel">
+              <label for="mittel">Mittel</label>
+            </td>
+            <td>
+              <input type="radio" id="gross" name="gross" value="Groß">
+              <label for="gross">Groß</label>
+            </td>
+          </tr>
+        
+          <tr>
+            <th>Zustand</th>
+            <td>
+              <input type="radio" id="bluehend" name="zustand" value="Blühend">
+              <label for="bluehend">Blühend</label>
+            </td>
+            <td>
+              <input type="radio" id="neutral" name="zustand" value="Neutral">
+              <label for="neutral">Neutral</label>
+            </td>
+            <td>
+              <input type="radio" id="niedergang" name="zustand" value="Niedergang">
+              <label for="niedergang">Niedergang</label>
+            </td>
+          </tr>
+        </table>
+        <br>
+
+        <input type="submit" value="Do your magic Co-Meister" type="button" class="btn btn-success">
+    
+      </form>
+      </details>
+<br>
+</div>
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+      
+
+</body>
+</html>

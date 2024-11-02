@@ -1,0 +1,27 @@
+{% load static %}
+{% include "header.html" %}
+    <body>
+      <div class="container">
+      {% include "navbar.html" %}
+      
+<h1>{{location_alle.name}} Details</h1>
+    <ul class="list-group">
+      <li class="list-group-item"><b>Raumtyp:</b> {{location_alle.raumtyp}}</li>
+      <li class="list-group-item"><b>Einrichtungsstil:</b> {{location_alle.einrichtungsstil}}</li>
+      <li class="list-group-item"><b>Beleuchtung:</b> {{location_alle.beleuchtung}}</li>
+      <li class="list-group-item"><b>Zustand:</b> {{location_alle.zustand}}</li>
+      <li class="list-group-item"><b>Nutzung:</b> {{location_alle.nutzung}}</li>
+      <li class="list-group-item"><b>Spezielle Gegenstände:</b> {{location_alle.spezielle_gegenstände}}</li>
+      <li class="list-group-item"><b>Gefahren und Bedrohungen:</b> {{location_alle.gefahren_und_bedrohungen}}</li>
+      <li class="list-group-item"><b>Geheimnisse und versteckte Elemente:</b> {{location_alle.geheimnisse_und_versteckte_elemente}}</li>
+      <li class="list-group-item"><b>Quests und Interaktionsmöglichkeiten:</b> {{location_alle.quests_und_interaktionsmöglichkeiten}}</li>
+      <li class="list-group-item"><b>Kommentar:</b> {{location_alle.kommentar}}</li><br>
+      </ul> 
+    
+      <a class="btn btn-primary" href="{% url 'schauplatz' location_alle.ortliste.id %}" role="button">Zurück</a> 
+    <a class="btn btn-warning" href="{% url 'location_edit' location_alle.id %}" role="button">Bearbeiten</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+</html>

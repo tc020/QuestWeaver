@@ -1,0 +1,111 @@
+{% load static %}
+{% include "header.html" %}
+    <body>
+      <div class="container">
+      {% include "navbar.html" %}
+
+    <h1>Schauplatz {{schauplatz_alle.name}}</h1>
+
+      <table class="table">
+        <ul class="list-group">
+          <li class="list-group-item"><b>Typ:</b> {{schauplatz_alle.typ}}</li>
+          <li class="list-group-item"><b>Architektur:</b> {{schauplatz_alle.architektur}}</li>
+          <li class="list-group-item"><b>Zustand:</b> {{schauplatz_alle.zustand}}</li>
+          <li class="list-group-item"><b>Besitzer:</b> {{schauplatz_alle.besitzer}}</li>
+          <li class="list-group-item"><b>Wichtige Personen:</b> {{schauplatz_alle.wichtige_personen}}</li>
+          <li class="list-group-item"><b>Geschichte des Schauplatzes:</b> {{schauplatz_alle.geschichte_des_schauplatzes}}</li>
+          <li class="list-group-item"><b>Bedeutung oder Funktion:</b> {{schauplatz_alle.bedeutung_oder_funktion}}</li>
+          <li class="list-group-item"><b>Quests und Interaktionsmöglichkeiten:</b> {{schauplatz_alle.quests_und_interaktionsmöglichkeiten}}</li>
+          <li class="list-group-item"><b>Gefahren und Bedrohungen:</b> {{schauplatz_alle.gefahren_und_bedrohungen}}</li>
+          <li class="list-group-item"><b>Geheimnisse und Legenden:</b> {{schauplatz_alle.geheimnisse_und_legenden}}</li>
+          <li class="list-group-item"><b>Beschreibung:</b> {{schauplatz_alle.beschreibung}}</li>
+          <li class="list-group-item"><b>Kommentar:</b> {{schauplatz_alle.kommentar}}</li><br>
+          </ul> 
+        </table>
+
+          <h1>Wichtige Personen die hier anzutreffen sind</h1>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Figuren-Typ</th>
+              </tr>
+            </thead>
+            <tbody>{% for figur in figuren %}
+              <tr>
+                <th scope="row">{{figur.name}}</th>
+                <td>{{figur.figurenliste}}</td>
+                <td><a class="btn btn-primary" href="" role="button">Einsehen</a></td>
+                <td><a class="btn btn-warning" href="" role="button">Bearbeiten</a></td>
+                <td><form method="POST" action="">
+                  <input type="text" name="parameter1" style="display:none;" value="{{ort.id}}">
+                  <input type="text" name="parameter2" style="display:none;" value="{{schauplatz_alle.id}}">
+                  <button class="btn btn-danger" type="submit">Delete</button>
+              </form></td>
+              </tr>
+              {% endfor %}</tbody>
+          </table>
+          <form action="{% url 'figur_anlegen' %}" method="post"> 
+            {% csrf_token %} 
+          
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Name der Figur eingeben:</span>
+            <input type="text" class="form-control" name="figur_name" id="figur_name" value="{{figuren_edit.name}}" aria-label="Username" aria-describedby="basic-addon1"> <!-- greift auf die Post-Variable zu -->
+
+            <span class="input-group-text" id="basic-addon1">Figurenliste zuteilen</span>
+            <select name="figur_figurenliste" class="form-select" aria-label="Default select example">
+              {% for liste in figurenlisten %} <!--alle aktuell vorhandenen Listen auslesen-->
+        <option value="{{liste.id}}">{{liste.name}}</option>
+        {% endfor %}
+            </select></div>
+
+          <input type="text" name="ort_id" style="display:none;" value="{{schauplatz_alle.id}}">
+          <input type="submit" value="Erstellen" type="button" class="btn btn-success">
+          </form>
+
+          <br>
+
+          <h1>Locations in {{schauplatz_alle.name}}</h1>
+
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Kommentar</th>
+              </tr>
+            </thead>
+        <tbody>{% for ort in location %}
+          <tr>
+            <th scope="row">{{ort.name}}</th>
+            <td><a class="btn btn-primary" href="{% url 'location' ort.id %}" role="button">Einsehen</a></td>
+            <td><a class="btn btn-warning" href="{% url 'location_edit' ort.id %}" role="button">Bearbeiten</a></td>
+            <td><form method="POST" action="{% url 'delete_location' %}">
+              {% csrf_token %}
+              <input type="text" name="parameter1" style="display:none;" value="{{ort.id}}">
+              <input type="text" name="parameter2" style="display:none;" value="{{schauplatz_alle.id}}">
+              <button class="btn btn-danger" type="submit">Delete</button>
+          </form></td>
+          </tr>
+          {% endfor %}</tbody>
+      </table>
+
+      <h3>Neue Location anlegen</h3>
+      
+      <form action="{% url 'location_anlegen' %}" method="post"> 
+        {% csrf_token %} 
+      
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Neuer Schauplatz</span>
+        <input type="text" class="form-control" name="location_name" aria-label="Username" aria-describedby="basic-addon1"> <!-- greift auf die Post-Variable zu -->
+        <input type="text" name="parameter1" style="display:none;" value="{{schauplatz_alle.id}}">
+      </div><br>  
+  
+      <input type="submit" value="Erstellen" type="button" class="btn btn-success">
+      </form>
+
+     <br>
+      <a class="btn btn-primary" href="{% url 'orte' schauplatz_alle.ortliste.id %}" role="button">Zurück</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>

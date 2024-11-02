@@ -1,0 +1,45 @@
+{% load static %}
+{% include "header.html" %}
+
+<body>
+  <div class="container">
+  {% include "navbar.html" %}
+
+    <h1>Abenteuer-Überischt</h1>
+ 
+
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Abenteuer-Nr.</th>
+                <th scope="col">Abenteuer-Name</th>
+              </tr>
+            </thead>
+            <tbody>{% for chapter in kapitel %}
+              <tr>
+                <th scope="row">{{chapter.kapitelNr}}</th>
+                <td>{{chapter.name}}</td>
+                <td><a class="btn btn-primary" href="{% url 'szenen' chapter.id %}" role="button">Einsehen</a></td>
+                <td><a class="btn btn-danger" href="{% url 'delete_kapitel' chapter.id %}" role="button">Delete</a></td>
+              </tr>
+              {% endfor %}</tbody>
+          </table>
+
+          <form action="{% url 'kapitel_anlegen' %}" method="post"> 
+            {% csrf_token %} 
+          
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Neue Abenteuernummer</span>
+            <input type="text" class="form-control" name="kapitel_nummer" id="kapitel_ummer" aria-label="Username" aria-describedby="basic-addon1"> <!-- greift auf die Post-Variable zu -->
+            <span class="input-group-text" id="basic-addon1">Neuer Abenteuername</span>
+            <input type="text" class="form-control" name="kapitel_name" id="kapitel_name" aria-label="Username" aria-describedby="basic-addon1"> 
+          </div>
+    
+          <input type="submit" value="Abenteuer anlegen" type="button" class="btn btn-success">
+        </form>
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        
+</body>
+</html>

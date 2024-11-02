@@ -1,0 +1,73 @@
+{% load static %}
+{% include "header.html" %}
+    <body>
+      <div class="container">
+      {% include "navbar.html" %}
+      
+<h1>{{location_alle.name}} Edit</h1>
+    <form action="{% url 'location_edit' location_alle.id %}" method="post"> 
+        {% csrf_token %} 
+
+        <div class="md-form mb-4 pink-textarea active-pink-textarea-2">
+          <i class="fas fa-angle-double-right prefix"></i>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Raumtyp</span>
+        <input type="text" class="form-control" name="raumtyp" value="{{location_alle.raumtyp}}" placeholder="z.B. Schankraum, Bibliothek, Kerker" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Einrichtungsstil</span>
+        <input type="text" class="form-control" name="einrichtungsstil" value="{{location_alle.einrichtungsstil}}" placeholder="z.B. rustikal, prunkvoll, spärlich" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Beleuchtung</span>
+        <input type="text" class="form-control" name="beleuchtung" value="{{location_alle.beleuchtung}}" placeholder="z.B. Fackeln, magische Lichter, Kerzen" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Zustand</span>
+        <input type="text" class="form-control" name="zustand" value="{{location_alle.zustand}}" placeholder="z.B. sauber, verfallen, renoviert" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Nutzung</span>
+        <input type="text" class="form-control" name="nutzung" value="{{location_alle.nutzung}}" placeholder="z.B. Wohnraum, Verlies, Lagerraum" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Spezielle Gegenstände</span>
+        <input type="text" class="form-control" name="spezielle_gegenstände" value="{{location_alle.spezielle_gegenstände}}" placeholder="z.B. wertvolle Möbel, Artefakte" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Gefahren und Bedrohungen</span>
+        <input type="text" class="form-control" name="gefahren_und_bedrohungen" value="{{location_alle.gefahren_und_bedrohungen}}" placeholder="z.B. Fallen, Monster" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Geheimnisse und versteckte Elemente</span>
+        <input type="text" class="form-control" name="geheimnisse_und_versteckte_elemente" value="{{location_alle.geheimnisse_und_versteckte_elemente}}" placeholder="z.B. Versteckte Türen, Fallen, Geheimfächer" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Quests und Interaktionsmöglichkeiten</span>
+        <input type="text" class="form-control" name="quests_und_interaktionsmöglichkeiten" value="{{location_alle.quests_und_interaktionsmöglichkeiten}}" placeholder="z.B. Interaktionen, die in diesem Raum stattfinden können" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" name="ort_alive" value="{{location_alle.alive}}" {% if location_alle.alive == True %}checked{% endif %}>
+          <label class="form-check-label" for="flexSwitchCheckDefault">Location noch aktiv?</label> <!--if-Abfrage zum Status und falls True dann Checkbox mittels checked setzen -->
+        </div>        
+
+        <textarea name="kommentar" class="md-textarea form-control" rows="10">{{location_alle.kommentar}}</textarea>
+        <label for="form23">Notizen bearbeiten</label></div>
+      
+           <a class="btn btn-primary" href="{% url 'location' location %}" role="button">Zurück</a>
+        <input type="submit" value="Speichern" type="button" class="btn btn-success">
+      </form><br>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
